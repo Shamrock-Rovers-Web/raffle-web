@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Junior Hoops Rare Rovers Jersey Raffle">
+  <meta property="og:description" content="Win historic Shamrock Rovers jerseys while supporting Stephen Bradley and Glenn Cronin's Dublin Marathon run for Oscar's Kids">
+  <title>Junior Hoops Rare Rovers Jersey Raffle!</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+      line-height: 1.6; 
+      color: #333; 
+    }
+    .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+    
+    header { 
+      background: linear-gradient(135deg, #005724 0%, #007030 100%); 
+      color: white; 
+      padding: 60px 20px 40px; 
+      text-align: center; 
+    }
+    h1 { font-size: clamp(1.8em, 5vw, 3em); margin-bottom: 15px; }
+    .subtitle { font-size: 1.1em; opacity: 0.95; max-width: 600px; margin: 0 auto; }
+    
+    .charity-info {
+      background: #f8f9fa;
+      padding: 30px;
+      margin: 30px auto;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 800px;
+    }
+    .charity-info h3 { color: #005724; margin-bottom: 15px; font-size: 1.4em; }
+    .charity-link { 
+      color: #005724; 
+      text-decoration: none; 
+      font-weight: bold;
+      border-bottom: 2px solid #005724;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .stat-box {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .stat-number { 
+      font-size: 2.5em; 
+      font-weight: bold; 
+      color: #005724; 
+      display: block;
+    }
+    .stat-label { color: #666; margin-top: 5px; }
+    
+    .prizes-section {
+      margin: 50px 0;
+    }
+    .prizes-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .prizes-header h2 {
+      font-size: 2.2em;
+      color: #005724;
+      margin-bottom: 10px;
+    }
+    
+    .prizes {
+      display: grid;
+      gap: 30px;
+      margin: 40px 0;
+    }
+    .prize {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .prize:hover { transform: translateY(-3px); }
+    
+    .prize-content {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    @media (min-width: 768px) {
+      .prize-content {
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+    
+    .prize-badge {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #333;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      display: inline-block;
+      white-space: nowrap;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .prize-info { flex: 1; }
+    .prize-info h3 { 
+      color: #005724; 
+      margin: 10px 0; 
+      font-size: 1.4em;
+    }
+    .prize-info p { 
+      color: #555; 
+      line-height: 1.6;
+    }
+    .rare-tag {
+      display: inline-block;
+      background: #ff4444;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      margin-left: 10px;
+      font-weight: normal;
+    }
+    
+    .buy-section {
+      background: linear-gradient(135deg, #f9f9f9 0%, #e9f5ec 100%);
+      padding: 50px 20px;
+      border-radius: 16px;
+      text-align: center;
+      margin: 50px 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    .buy-section h2 {
+      color: #005724;
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    .price-tag {
+      font-size: 3em;
+      color: #005724;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .buy-button {
+      background: linear-gradient(135deg, #005724 0%, #007030 100%);
+      color: white;
+      padding: 20px 50px;
+      font-size: 1.4em;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,87,36,0.3);
+      margin: 20px 0;
+    }
+    .buy-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,87,36,0.4);
+    }
+    .secure-note {
+      color: #666;
+      font-size: 0.9em;
+      margin-top: 15px;
+    }
+    
+    .terms {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #f5f5f5;
+      border-radius: 12px;
+    }
+    .terms h3 { 
+      color: #005724; 
+      margin-bottom: 20px;
+      font-size: 1.3em;
+    }
+    .terms ul { 
+      list-style-position: inside; 
+      color: #555;
+      line-height: 1.8;
+    }
+    .terms li { margin: 10px 0; }
+    
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #005724;
+      color: white;
+      margin-top: 60px;
+    }
+    footer a { color: white; }
+    
+    .pulse {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>⚽ Junior Hoops Rare Rovers Jersey Raffle! ⚽</h1>
+      <p class="subtitle">Win historic Shamrock Rovers jerseys while supporting Stephen Bradley and Glenn Cronin's Dublin Marathon run for Oscar's Kids Ireland!</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="charity-info">
+      <h3>🏃‍♂️ Supporting Our Gaffer's Marathon Challenge</h3>
+      <p>Shamrock Rovers manager Stephen Bradley and assistant Glenn Cronin are taking on the Irish Life Dublin Marathon 2025 — 26.2 miles for Oscar's Kids Ireland.</p>
+      <p style="margin-top: 15px;">
+        <strong>Current fundraising: €28,599 of €100,000 target</strong>
+      </p>
+      <p style="margin-top: 15px;">
+        <a href="https://eventmaster.ie/fundraising/pages/SB63018192" class="charity-link" target="_blank">
+          Visit their main fundraising page →
+        </a>
+      </p>
+    </div>
+
+    <div class="stats">
+      <div class="stat-box">
+        <span class="stat-number">€5</span>
+        <span class="stat-label">Per Ticket</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Incredible Prizes</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">Goes to Oscar's Kids</span>
+      </div>
+    </div>
+
+    <div class="prizes-section">
+      <div class="prizes-header">
+        <h2>🏆 Incredible Prize Collection</h2>
+        <p>Four pieces of Shamrock Rovers history could be yours!</p>
+      </div>
+      
+      <div class="prizes">
+        <div class="prize">
+          <div class="prize-content">
+            <div class="prize-badge">🥇 1ST PRIZE</div>
+            <div class="prize-info">
+              <h3>1987 Match-Worn Jersey <span class="rare-tag">EXTREMELY RARE</span></h3>
+              <p>Worn by Pat Byrne at Milltown. This is a genuine piece of Shamrock Rovers history from our golden era. An absolutely priceless collector's item that rarely comes to market. Any Hoops fan would treasure this forever.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="prize">
+          <div class="prize-content">
+            <div class="prize-badge">🥈 2ND PRIZE</div>
+            <div class="prize-info">
+              <h3>2022 Match-Worn & Squad-Signed Jersey</h3>
+              <p>Worn by Chris McCann during our championship-winning season. Signed by the entire 2022 squad including Jack Byrne, Aaron McEneff, and all the title heroes. A modern classic with incredible provenance.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="prize">
+          <div class="prize-content">
+            <div class="prize-badge">🥉 3RD PRIZE</div>
+            <div class="prize-info">
+              <h3>2025 Squad-Signed Jersey</h3>
+              <p>Brand new with tags, signed by the current squad. Get the signatures of Johnny Kenny, Neil Farrugia, and all of today's stars. Perfect for any supporter wanting a piece of the current era.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="prize">
+          <div class="prize-content">
+            <div class="prize-badge">🏅 4TH PRIZE</div>
+            <div class="prize-info">
+              <h3>1994 Purple Away Shirt Retro Edition</h3>
+              <p>The infamous purple away kit! Brand new retro edition in XL. One of the most iconic and sought-after Rovers shirts ever made. A cult classic that every collection needs.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="buy-section">
+      <h2>Get Your Tickets Now!</h2>
+      <p style="font-size: 1.2em; margin: 15px 0;">Support Stephen & Glenn's marathon while winning Hoops history</p>
+      <div class="price-tag">Only €5 per ticket</div>
+      <a href="https://buy.stripe.com/fZeaEWacc16i3Pb5kk" class="buy-button pulse">
+        🎟️ Buy Raffle Tickets Now
+      </a>
+      <p class="secure-note">
+        🔒 Secure payment via Stripe<br>
+        ✉️ Instant confirmation by email<br>
+        💚 100% of proceeds to Oscar's Kids Ireland
+      </p>
+    </div>
+
+    <div class="terms">
+      <h3>📋 Raffle Terms & Conditions</h3>
+      <ul>
+        <li>Must be 18 or over to enter</li>
+        <li>Winners will be drawn randomly and fairly</li>
+        <li>Draw date to be announced (follow Shamrock Rovers social media)</li>
+        <li>Winners will be contacted via email within 24 hours</li>
+        <li>Prizes must be collected or shipping arranged within 30 days</li>
+        <li>All proceeds go directly to Oscar's Kids Ireland</li>
+        <li>Raffle organized by Junior Hoops supporters</li>
+        <li>By entering you agree to your name being announced if you win</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <p>Junior Hoops Rare Rovers Jersey Raffle</p>
+    <p style="margin-top: 10px;">Supporting <a href="https://eventmaster.ie/fundraising/pages/SB63018192" target="_blank">Stephen Bradley & Glenn Cronin's Marathon</a> for Oscar's Kids</p>
+    <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">Not affiliated with Shamrock Rovers F.C. • Organized by supporters</p>
+  </footer>
+</body>
+</html>
