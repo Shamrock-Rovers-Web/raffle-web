@@ -88,6 +88,18 @@
     }
     .prize:hover { transform: translateY(-3px); }
     
+    .prize-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background: #f0f0f0;
+    }
+    @media (min-width: 768px) {
+      .prize-image {
+        height: 300px;
+      }
+    }
+    
     .prize-content {
       padding: 25px;
       display: flex;
@@ -260,6 +272,7 @@
       
       <div class="prizes">
         <div class="prize">
+          <img src="jersey1.jpg" alt="1987 Pat Byrne Match-Worn Jersey" class="prize-image">
           <div class="prize-content">
             <div class="prize-badge">🥇 1ST PRIZE</div>
             <div class="prize-info">
@@ -270,6 +283,7 @@
         </div>
 
         <div class="prize">
+          <img src="jersey2.jpg" alt="2022 Chris McCann Match-Worn Jersey" class="prize-image">
           <div class="prize-content">
             <div class="prize-badge">🥈 2ND PRIZE</div>
             <div class="prize-info">
@@ -280,6 +294,7 @@
         </div>
 
         <div class="prize">
+          <img src="jersey3.jpg" alt="2025 Squad-Signed Jersey" class="prize-image">
           <div class="prize-content">
             <div class="prize-badge">🥉 3RD PRIZE</div>
             <div class="prize-info">
@@ -290,6 +305,7 @@
         </div>
 
         <div class="prize">
+          <img src="jersey4.jpg" alt="1994 Purple Away Retro Jersey" class="prize-image">
           <div class="prize-content">
             <div class="prize-badge">🏅 4TH PRIZE</div>
             <div class="prize-info">
