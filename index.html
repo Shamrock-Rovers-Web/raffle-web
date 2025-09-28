@@ -42,8 +42,8 @@
     
     .stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
       margin: 30px 0;
     }
     .stat-box {
@@ -76,78 +76,152 @@
     
     .prizes {
       display: grid;
-      gap: 30px;
+      gap: 20px;
       margin: 40px 0;
     }
+    @media (min-width: 768px) {
+      .prizes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+    
     .prize {
       background: white;
       border-radius: 12px;
-      overflow: hidden;
+      padding: 20px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
     .prize:hover { transform: translateY(-3px); }
     
-    .prize-image {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      background: #f0f0f0;
-    }
-    @media (min-width: 768px) {
-      .prize-image {
-        height: 300px;
-      }
+    .prize-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 15px;
     }
     
-    .prize-content {
-      padding: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+    .prize-thumbnail {
+      width: 100px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
-    @media (min-width: 768px) {
-      .prize-content {
-        flex-direction: row;
-        align-items: center;
-      }
+    .prize-thumbnail:hover {
+      transform: scale(1.05);
+    }
+    
+    .prize-main {
+      flex: 1;
     }
     
     .prize-badge {
       background: linear-gradient(135deg, #FFD700, #FFA500);
       color: #333;
-      padding: 8px 20px;
-      border-radius: 25px;
+      padding: 6px 16px;
+      border-radius: 20px;
       font-weight: bold;
       display: inline-block;
-      white-space: nowrap;
-      text-align: center;
+      font-size: 0.9em;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
     }
-    .prize-info { flex: 1; }
-    .prize-info h3 { 
+    
+    .prize-title { 
       color: #005724; 
-      margin: 10px 0; 
-      font-size: 1.4em;
+      margin: 8px 0; 
+      font-size: 1.2em;
+      line-height: 1.3;
     }
-    .prize-info p { 
-      color: #555; 
-      line-height: 1.6;
-    }
+    
     .rare-tag {
       display: inline-block;
       background: #ff4444;
       color: white;
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: 4px;
-      font-size: 0.85em;
-      margin-left: 10px;
+      font-size: 0.7em;
+      margin-left: 8px;
       font-weight: normal;
+      vertical-align: middle;
+    }
+    
+    .prize-description { 
+      color: #555; 
+      line-height: 1.5;
+      font-size: 0.95em;
+    }
+    
+    .click-hint {
+      font-size: 0.85em;
+      color: #888;
+      margin-top: 5px;
+      font-style: italic;
+    }
+    
+    /* Lightbox styles */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.9);
+      animation: fadeIn 0.3s;
+    }
+    
+    .lightbox.active {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      animation: zoomIn 0.3s;
+    }
+    
+    .lightbox-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .lightbox-close {
+      position: absolute;
+      top: 20px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    
+    .lightbox-close:hover {
+      color: #bbb;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes zoomIn {
+      from { transform: scale(0.8); }
+      to { transform: scale(1); }
     }
     
     .buy-section {
       background: linear-gradient(135deg, #f9f9f9 0%, #e9f5ec 100%);
-      padding: 50px 20px;
+      padding: 40px 20px;
       border-radius: 16px;
       text-align: center;
       margin: 50px 0;
@@ -155,20 +229,20 @@
     }
     .buy-section h2 {
       color: #005724;
-      font-size: 2em;
-      margin-bottom: 20px;
+      font-size: 1.8em;
+      margin-bottom: 15px;
     }
     .price-tag {
-      font-size: 3em;
+      font-size: 2.5em;
       color: #005724;
       font-weight: bold;
-      margin: 20px 0;
+      margin: 15px 0;
     }
     .buy-button {
       background: linear-gradient(135deg, #005724 0%, #007030 100%);
       color: white;
-      padding: 20px 50px;
-      font-size: 1.4em;
+      padding: 18px 40px;
+      font-size: 1.2em;
       font-weight: bold;
       border: none;
       border-radius: 50px;
@@ -177,7 +251,7 @@
       display: inline-block;
       transition: all 0.3s;
       box-shadow: 0 4px 15px rgba(0,87,36,0.3);
-      margin: 20px 0;
+      margin: 15px 0;
     }
     .buy-button:hover {
       transform: translateY(-2px);
@@ -192,21 +266,21 @@
     .terms {
       max-width: 800px;
       margin: 40px auto;
-      padding: 30px;
+      padding: 25px;
       background: #f5f5f5;
       border-radius: 12px;
     }
     .terms h3 { 
       color: #005724; 
-      margin-bottom: 20px;
-      font-size: 1.3em;
+      margin-bottom: 15px;
+      font-size: 1.2em;
     }
     .terms ul { 
       list-style-position: inside; 
       color: #555;
       line-height: 1.8;
     }
-    .terms li { margin: 10px 0; }
+    .terms li { margin: 8px 0; }
     
     footer {
       text-align: center;
@@ -240,6 +314,9 @@
       <h3>🏃‍♂️ Supporting Our Gaffer's Marathon Challenge</h3>
       <p>Shamrock Rovers manager Stephen Bradley and assistant Glenn Cronin are taking on the Irish Life Dublin Marathon 2025 — 26.2 miles for Oscar's Kids Ireland.</p>
       <p style="margin-top: 15px;">
+        <strong>Current fundraising: €28,599 of €100,000 target</strong>
+      </p>
+      <p style="margin-top: 15px;">
         <a href="https://eventmaster.ie/fundraising/pages/SB63018192" class="charity-link" target="_blank">
           Visit their main fundraising page →
         </a>
@@ -253,72 +330,76 @@
       </div>
       <div class="stat-box">
         <span class="stat-number">4</span>
-        <span class="stat-label">Incredible Prizes</span>
+        <span class="stat-label">Prizes</span>
       </div>
       <div class="stat-box">
         <span class="stat-number">100%</span>
-        <span class="stat-label">Goes to Oscar's Kids</span>
+        <span class="stat-label">To Charity</span>
       </div>
     </div>
 
     <div class="prizes-section">
       <div class="prizes-header">
         <h2>🏆 Incredible Prize Collection</h2>
-        <p>We have four unique Shamrock Rovers herseys that could be yours!</p>
+        <p>Four pieces of Shamrock Rovers history could be yours!</p>
       </div>
       
       <div class="prizes">
         <div class="prize">
-          <img src="jersey1.jpg" alt="1987 Pat Byrne Match-Worn Jersey" class="prize-image">
-          <div class="prize-content">
-            <div class="prize-badge">🥇 1ST PRIZE</div>
-            <div class="prize-info">
-              <h3>1987 Match-Worn Jersey <span class="rare-tag">EXTREMELY RARE</span></h3>
-              <p>Worn by Pat Byrne at Milltown. This is a genuine piece of Shamrock Rovers history from our golden era. An absolutely priceless collector's item. Any Hoops fan would treasure this forever.</p>
+          <div class="prize-header">
+            <img src="jersey1.jpg" alt="1987 Pat Byrne Jersey" class="prize-thumbnail" onclick="openLightbox('jersey1.jpg')">
+            <div class="prize-main">
+              <div class="prize-badge">🥇 1ST PRIZE</div>
+              <h3 class="prize-title">1987 Match-Worn Jersey <span class="rare-tag">EXTREMELY RARE</span></h3>
+              <p class="click-hint">👆 Click photo to enlarge</p>
             </div>
           </div>
+          <p class="prize-description">Worn by Pat Byrne at Milltown. This is a genuine piece of Shamrock Rovers history. An absolutely priceless collector's item.</p>
         </div>
 
         <div class="prize">
-          <img src="jersey2.jpg" alt="2022 Chris McCann Match-Worn Jersey" class="prize-image">
-          <div class="prize-content">
-            <div class="prize-badge">🥈 2ND PRIZE</div>
-            <div class="prize-info">
-              <h3>2022 Match-Worn & Squad-Signed Jersey</h3>
-              <p>Worn by Chris McCann during the third of our four in a row league-winning season. Signed by the entire 2022 squad.</p>
+          <div class="prize-header">
+            <img src="jersey2.jpg" alt="2022 Chris McCann Jersey" class="prize-thumbnail" onclick="openLightbox('jersey2.jpg')">
+            <div class="prize-main">
+              <div class="prize-badge">🥈 2ND PRIZE</div>
+              <h3 class="prize-title">2022 Match-Worn & Squad-Signed</h3>
+              <p class="click-hint">👆 Click photo to enlarge</p>
             </div>
           </div>
+          <p class="prize-description">Worn by Chris McCann during our 2022 League-winning season. Signed by the entire 2022 squad</p>
         </div>
 
         <div class="prize">
-          <img src="jersey3.jpg" alt="2025 Squad-Signed Jersey" class="prize-image">
-          <div class="prize-content">
-            <div class="prize-badge">🥉 3RD PRIZE</div>
-            <div class="prize-info">
-              <h3>2025 Squad-Signed Jersey</h3>
-              <p>Brand new with tags, signed by the current squad. </p>
+          <div class="prize-header">
+            <img src="jersey3.jpg" alt="2025 Squad-Signed Jersey" class="prize-thumbnail" onclick="openLightbox('jersey3.jpg')">
+            <div class="prize-main">
+              <div class="prize-badge">🥉 3RD PRIZE</div>
+              <h3 class="prize-title">2025 Squad-Signed Jersey</h3>
+              <p class="click-hint">👆 Click photo to enlarge</p>
             </div>
           </div>
+          <p class="prize-description">Brand new with tags, signed by the current squad. </p>
         </div>
 
         <div class="prize">
-          <img src="jersey4.jpg" alt="1994 Purple Away Retro Jersey" class="prize-image">
-          <div class="prize-content">
-            <div class="prize-badge">🏅 4TH PRIZE</div>
-            <div class="prize-info">
-              <h3>1994 Purple Away Shirt Retro Edition</h3>
-              <p>The infamous purple away kit! 2024 retro edition in XL. One of the most iconic and sought-after Rovers shirts ever made - both times around.</p>
+          <div class="prize-header">
+            <img src="jersey4.jpg" alt="1994 Purple Away Jersey" class="prize-thumbnail" onclick="openLightbox('jersey4.jpg')">
+            <div class="prize-main">
+              <div class="prize-badge">🏅 4TH PRIZE</div>
+              <h3 class="prize-title">1994 Purple Away Retro (XL)</h3>
+              <p class="click-hint">👆 Click photo to enlarge</p>
             </div>
           </div>
+          <p class="prize-description">The infamous purple away kit! Brand new retro edition. One of the most iconic and sought-after Rovers shirts ever made. BOth times aounr. Brand new, size XL.</p>
         </div>
       </div>
     </div>
 
     <div class="buy-section">
       <h2>Get Your Tickets Now!</h2>
-      <p style="font-size: 1.2em; margin: 15px 0;">Support Stephen & Glenn's marathon while winning Hoops history</p>
-      <div class="price-tag">Only €5 per ticket - multiple tickets per purchase encouraged</div>
-      <a href="https://buy.stripe.com/fZeaEWacc16i3Pb5kk" class="buy-button pulse">
+      <p style="font-size: 1.1em; margin: 10px 0;">Support Stephen & Glenn's marathon while winning Hoops history</p>
+      <div class="price-tag">Only €5 per ticket - multiple purchases welcome!</div>
+      <a href="https://buy.stripe.com/fZuaEWacc16i3Pb5kv3sI0g" class="buy-button pulse">
         🎟️ Buy Raffle Tickets Now
       </a>
       <p class="secure-note">
@@ -333,11 +414,11 @@
       <ul>
         <li>Must be 18 or over to enter</li>
         <li>Winners will be drawn randomly and fairly</li>
-        <li>Draw date - Sunday 19th October</li>
+        <li>Draw date is Sunday 17th October</li>
         <li>Winners will be contacted via email within 24 hours</li>
-        <li>Prizes must be collected or shipping arranged within 30 days</li>
+        <li>Prizes must be collected or shipping arranged at your expense within 30 days</li>
         <li>All proceeds go directly to Oscar's Kids Ireland</li>
-        <li>Raffle organized by Junior Hoops volunteers</li>
+        <li>Raffle organized by Junior Hoops supporters</li>
         <li>By entering you agree to your name being announced if you win</li>
       </ul>
     </div>
@@ -346,7 +427,50 @@
   <footer>
     <p>Junior Hoops Rare Rovers Jersey Raffle</p>
     <p style="margin-top: 10px;">Supporting <a href="https://eventmaster.ie/fundraising/pages/SB63018192" target="_blank">Stephen Bradley & Glenn Cronin's Marathon</a> for Oscar's Kids</p>
-    <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">Not affiliated with Shamrock Rovers F.C. • Organized by supporters</p>
+    <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.8;">Organized by supporters</p>
   </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">&times;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" class="lightbox-img" src="" alt="Jersey">
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById('lightbox').classList.add('active');
+      document.getElementById('lightbox-img').src = src;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close lightbox with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Optional: Update ticket count periodically
+    async function updateCount() {
+      try {
+        // If you want real counts, fetch from a simple endpoint
+        // const res = await fetch('/api/count');
+        // const data = await res.json();
+        // document.getElementById('sold').textContent = data.count;
+      } catch(e) {
+        console.log('Could not update count');
+      }
+    }
+    
+    // Update every 30 seconds
+    setInterval(updateCount, 30000);
+  </script>
 </body>
 </html>
